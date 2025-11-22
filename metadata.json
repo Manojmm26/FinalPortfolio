@@ -1,0 +1,5 @@
+{
+  "name": "Windows Time Machine",
+  "description": "A portfolio-defining project that simulates the history of Windows operating systems, from Windows 95 through Windows 11, using a consistent DOM structure and a powerful CSS theming engine in Angular.",
+  "requestFramePermissions": []
+}

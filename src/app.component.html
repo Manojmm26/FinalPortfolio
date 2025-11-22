@@ -1,0 +1,19 @@
+<div 
+  class="os-root w-screen h-screen overflow-hidden" 
+  [attr.data-theme]="theme()"
+  [style.font-family]="'var(--font-main)'"
+  [style.background-color]="'var(--desktop-bg-color)'"
+  [style.background-image]="'var(--desktop-bg-image)'"
+  style="background-size: cover; background-position: center;">
+
+  <app-desktop></app-desktop>
+
+  <!-- Render all non-minimized windows -->
+  @for (process of processes(); track process.processId) {
+    @if (!process.isMinimized) {
+      <app-window [process]="process" cdkDragBoundary=".os-root"></app-window>
+    }
+  }
+
+  <app-taskbar></app-taskbar>
+</div>

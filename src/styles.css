@@ -1,0 +1,178 @@
+/* Global Styles & Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Segoe+UI&family=Tahoma&display=swap');
+
+:root {
+  --font-main: 'Tahoma', sans-serif;
+  --font-win95: 'MS Sans Serif', 'Arial', sans-serif; /* A common fallback for Win95 look */
+  --font-xp: 'Tahoma', sans-serif;
+  --font-7: 'Segoe UI', sans-serif;
+  --font-11: 'Segoe UI Variable', 'Segoe UI', sans-serif;
+
+  --desktop-bg-color: #008080;
+  --desktop-bg-image: none;
+  --window-bg: #c0c0c0;
+  --window-content-bg: #ffffff;
+  --title-bar-bg: #000080;
+  --title-bar-bg-inactive: #808080;
+  --title-bar-text: #ffffff;
+  --border-style-outset: outset;
+  --border-style-inset: inset;
+  --border-width: 2px;
+  --border-color-light: #dfdfdf;
+  --border-color-dark: #404040;
+  --border-radius: 0px;
+  --shadow: none;
+  --taskbar-bg: #c0c0c0;
+  --taskbar-alignment: flex-start;
+  --start-btn-bg: #c0c0c0;
+  --start-btn-font-weight: bold;
+  --start-btn-padding: 2px 8px;
+  --start-btn-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAIRlSURBVDhPY2AY5sD/M3ADjE7A+CDA+P+f8f8n4wIKMEI/EaOAEsOM/5f/f0YdDMysgAETw+g/5v9/RgkM/G8gE5nB/5eB/28DCQ0M/C8SGYjM4P8Lg//fAhIeGPhfJDIQmcH/l4H/b4KJDQz8LxIZiLgAADEKyz7zIRRBAAAAAElFTkSuQmCC");
+  --start-btn-text-color: #000000;
+  --backdrop-filter: none;
+  --window-button-font: 'Marlett', 'Arial', sans-serif;
+  --window-controls-bg: #c0c0c0;
+}
+
+[data-theme="win95"] {
+  --font-main: var(--font-win95);
+  --desktop-bg-color: #008080;
+  --desktop-bg-image: none;
+  --window-bg: #c0c0c0;
+  --window-content-bg: #ffffff;
+  --title-bar-bg: #000080;
+  --title-bar-bg-inactive: #808080;
+  --title-bar-text: #ffffff;
+  --border-style-outset: outset;
+  --border-style-inset: inset;
+  --border-width: 2px;
+  --border-color-light: #dfdfdf;
+  --border-color-dark: #404040;
+  --border-radius: 0px;
+  --shadow: none;
+  --taskbar-bg: #c0c0c0;
+  --taskbar-alignment: flex-start;
+  --start-btn-bg: #c0c0c0;
+  --start-btn-font-weight: bold;
+  --start-btn-padding: 2px 8px;
+  --start-btn-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAIRlSURBVDhPY2AY5sD/M3ADjE7A+CDA+P+f8f8n4wIKMEI/EaOAEsOM/5f/f0YdDMysgAETw+g/5v9/RgkM/G8gE5nB/5eB/28DCQ0M/C8SGYjM4P8Lg//fAhIeGPhfJDIQmcH/l4H/b4KJDQz8LxIZiLgAADEKyz7zIRRBAAAAAElFTkSuQmCC");
+  --start-btn-text-color: #000000;
+  --backdrop-filter: none;
+  --window-controls-bg: #c0c0c0;
+}
+
+[data-theme="winXP"] {
+  --font-main: var(--font-xp);
+  --desktop-bg-color: #004e98;
+  --desktop-bg-image: url("https://i.imgur.com/xPeaXw6.jpg");
+  --window-bg: #ece9d8;
+  --window-content-bg: #ffffff;
+  --title-bar-bg: linear-gradient(180deg, #0055e5 0%, #3b8cf3 100%);
+  --title-bar-bg-inactive: linear-gradient(180deg, #7a7e81 0%, #c0c7cb 100%);
+  --title-bar-text: #ffffff;
+  --border-style-outset: solid;
+  --border-style-inset: solid;
+  --border-width: 1px;
+  --border-color-light: #0055e5;
+  --border-color-dark: #0055e5;
+  --border-radius: 6px;
+  --shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  --taskbar-bg: linear-gradient(0deg, #004e98 0%, #3083df 100%);
+  --taskbar-alignment: flex-start;
+  --start-btn-bg: linear-gradient(0deg, #30b12c 0%, #57e552 100%);
+  --start-btn-font-weight: bold;
+  --start-btn-padding: 0px 12px;
+  --start-btn-image: none;
+  --start-btn-text-color: #ffffff;
+  --window-controls-bg: transparent;
+}
+
+[data-theme="win7"] {
+  --font-main: var(--font-7);
+  --desktop-bg-color: #1e77d1;
+  --desktop-bg-image: url("https://i.imgur.com/K3GkYfW.jpg");
+  --window-bg: rgba(210, 225, 240, 0.9);
+  --window-content-bg: #ffffff;
+  --title-bar-bg: transparent;
+  --title-bar-bg-inactive: transparent;
+  --title-bar-text: #000000;
+  --border-style-outset: solid;
+  --border-style-inset: solid;
+  --border-width: 1px;
+  --border-color-light: rgba(255, 255, 255, 0.7);
+  --border-color-dark: rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --shadow: 5px 5px 15px rgba(0,0,0,0.25);
+  --taskbar-bg: rgba(25, 125, 225, 0.7);
+  --taskbar-alignment: flex-start;
+  --backdrop-filter: blur(15px);
+  --start-btn-bg: none;
+  --start-btn-image: url("data:image/png;base64,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");
+  --start-btn-text-color: transparent;
+}
+
+[data-theme="win10"] {
+  --font-main: var(--font-7);
+  --desktop-bg-color: #0078d4;
+  --desktop-bg-image: url("https://i.imgur.com/GGrPZXe.jpg");
+  --window-bg: #f0f0f0;
+  --window-content-bg: #ffffff;
+  --title-bar-bg: #ffffff;
+  --title-bar-bg-inactive: #ffffff;
+  --title-bar-text: #000000;
+  --border-style-outset: solid;
+  --border-style-inset: solid;
+  --border-width: 1px;
+  --border-color-light: #7a7a7a;
+  --border-color-dark: #7a7a7a;
+  --border-radius: 0px;
+  --shadow: 0 0 10px rgba(0,0,0,0.2);
+  --taskbar-bg: rgba(0, 0, 0, 0.8);
+  --taskbar-alignment: flex-start;
+  --backdrop-filter: blur(10px);
+  --start-btn-bg: transparent;
+  --start-btn-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACLSURBVEhL7dGxCsJgEAXQXbSUYlBQ8gPcfQt3L7G4LtgfUEzs3kFwE/cGPIEgYfHk5f1J5+FPh/xJJGn9W4hJkJIYWRARZUQiLCLGRGSIRUhEjIyIcIqYIApiBCIuQoI7xBCIcAirCLE4xLGEpDDFmAsJjnDHEYtLjHEIuRjhkAs5jgjA/wA398c8AM6PElbzYTnPAAAAAElFTkSuQmCC");
+  --start-btn-text-color: transparent;
+}
+
+[data-theme="win11"] {
+  --font-main: var(--font-11);
+  --desktop-bg-color: #0c4e8c;
+  --desktop-bg-image: url("https://i.imgur.com/T0bJq2b.jpg");
+  --window-bg: rgba(243, 243, 243, 0.85);
+  --window-content-bg: #ffffff;
+  --title-bar-bg: transparent;
+  --title-bar-bg-inactive: transparent;
+  --title-bar-text: #000000;
+  --border-style-outset: solid;
+  --border-style-inset: solid;
+  --border-width: 1px;
+  --border-color-light: rgba(0, 0, 0, 0.1);
+  --border-color-dark: rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.15);
+  --taskbar-bg: rgba(243, 243, 243, 0.8);
+  --taskbar-alignment: center;
+  --backdrop-filter: blur(20px) saturate(1.25);
+  --start-btn-bg: transparent;
+  --start-btn-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANJJREFUSEvllEsOwjAIRO+EHSBO4HYcfQEexb2T+HY1cQfgANwJbpexsUiAOGCRNFnwzchfWtoQf/4mBJuB3CVgsrZ/LkBmZGQhA+AF8P/n/yE0uKqJgBjQkweASrYII0AgvyYIEElQEEYgU0URRhDTQQYwgkQQSACSCiMIaSCDBwQiQQYwhEwQSYDIoIAwAokgixhBJggggkQQQwwhkgQJIBHEEIdEEUEkRySIIiT7/wW8A0YKGuNEn7Ww9D6p9w8+syr4AnIsMQloALeUNAF/z0O/AW2e3yDm0o+3AAAAAElFTkSuQmCC");
+  --start-btn-text-color: transparent;
+}
+
+
+/* Media query for mobile "Tablet Mode" */
+@media (max-width: 768px) {
+  .window-frame {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 40px) !important; /* Leave room for taskbar */
+    border-radius: 0 !important;
+    transform: none !important;
+  }
+
+  .title-bar {
+    height: 40px;
+  }
+}

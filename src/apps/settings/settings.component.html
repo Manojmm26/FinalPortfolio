@@ -1,0 +1,28 @@
+<div class="p-4 bg-[--window-content-bg] h-full flex flex-col">
+  <h2 class="text-xl font-semibold mb-4 text-center">Windows Time Machine</h2>
+  <p class="text-sm text-gray-600 mb-6 text-center">Select an operating system to change the look and feel of the environment.</p>
+
+  <div class="flex-grow space-y-3">
+    @for (theme of themes; track theme.id) {
+      <button 
+        (click)="selectTheme(theme.id)"
+        [class]="'w-full text-left p-3 rounded-md transition-colors duration-150 flex items-center ' + (windowManager.activeTheme() === theme.id ? 'bg-blue-500 text-white' : 'hover:bg-gray-200')"
+      >
+        <span class="mr-3 text-lg">
+          @switch (theme.id) {
+            @case ('win95') { &#x1F4BB; }
+            @case ('winXP') { &#x1F343; }
+            @case ('win7') { &#x1F4A0; }
+            @case ('win10') { &#x1F5A5;&#xFE0F; }
+            @case ('win11') { &#x1F30C; }
+          }
+        </span>
+        {{ theme.name }}
+      </button>
+    }
+  </div>
+
+  <div class="text-center text-xs text-gray-400 mt-4">
+    <p>Created with Angular & Tailwind CSS</p>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+/* Base styling for window and title bar */
+.window-frame {
+    background-color: var(--window-bg);
+    border: var(--border-width) var(--border-style-outset) var(--border-color-light);
+    border-right-color: var(--border-color-dark);
+    border-bottom-color: var(--border-color-dark);
+}
+.title-bar {
+    font-family: var(--font-main);
+}
+.window-content {
+    border: var(--border-width) var(--border-style-inset) var(--border-color-light);
+    border-right-color: var(--border-color-dark);
+    border-bottom-color: var(--border-color-dark);
+    border-top: none;
+    border-left: none;
+}
+
+/* Window button styling */
+.win-button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: default;
+    border: var(--border-width) var(--border-style-outset) var(--border-color-light);
+    border-right-color: var(--border-color-dark);
+    border-bottom-color: var(--border-color-dark);
+}
+
+.win-button:active {
+    border-style: var(--border-style-inset);
+}
+
+
+/* Theme-specific overrides */
+[data-theme="winXP"] .win-button,
+[data-theme="win7"] .win-button,
+[data-theme="win10"] .win-button,
+[data-theme="win11"] .win-button {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 28px;
+    height: 22px;
+    font-size: 14px;
+}
+
+[data-theme="winXP"] .win-button:hover,
+[data-theme="win7"] .win-button:hover,
+[data-theme="win10"] .win-button:hover,
+[data-theme="win11"] .win-button:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+[data-theme="winXP"] .close:hover,
+[data-theme="win7"] .close:hover,
+[data-theme="win10"] .close:hover,
+[data-theme="win11"] .close:hover {
+    background-color: #e81123;
+    color: white;
+}
+
+[data-theme="winXP"] .title-bar {
+    padding-left: 6px;
+}
+
+[data-theme="winXP"] .window-frame {
+    border: 1px solid var(--border-color-dark);
+    padding: 3px;
+    background: var(--window-bg);
+}
+
+[data-theme="winXP"] .window-content {
+    border: 1px solid var(--border-color-dark);
+}
+
+[data-theme="win7"] .window-frame, [data-theme="win11"] .window-frame {
+    border: 1px solid var(--border-color-light);
+}
+
+[data-theme="win7"] .window-content, [data-theme="win11"] .window-content {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
