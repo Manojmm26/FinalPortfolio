@@ -1,9 +1,13 @@
 <div 
   #windowFrame
+  cdkDrag
+  cdkDragBoundary=".os-root"
+  (cdkDragEnded)="onDragEnded($event)"
+  [cdkDragDisabled]="process().isMaximized"
   class="window-frame absolute flex flex-col transition-all duration-200"
   [style.zIndex]="process().zIndex"
-  [style.width.px]="process().size.width"
-  [style.height.px]="process().size.height"
+  [style.width.px]="process().isMaximized ? null : process().size.width"
+  [style.height.px]="process().isMaximized ? null : process().size.height"
   [class.active]="isActive()"
   [class.shadow]="true"
   [style.boxShadow]="'var(--shadow)'"
@@ -19,7 +23,6 @@
 
   <div 
     cdkDragHandle
-    [cdkDragDisabled]="process().isMaximized"
     class="title-bar flex items-center justify-between h-7 px-2 select-none cursor-default shrink-0"
     [style.color]="'var(--title-bar-text)'"
     [style.background]="isActive() ? 'var(--title-bar-bg)' : 'var(--title-bar-bg-inactive)'"
@@ -38,6 +41,6 @@
   </div>
 
   <div class="window-content flex-grow relative" [style.background]="'var(--window-content-bg)'">
-     <ng-container *ngComponentOutlet="process().component"></ng-container>
+     <ng-container [ngComponentOutlet]="process().component"></ng-container>
   </div>
 </div>

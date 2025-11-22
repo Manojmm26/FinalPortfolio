@@ -11,7 +11,7 @@
   <!-- Render all non-minimized windows -->
   @for (process of processes(); track process.processId) {
     @if (!process.isMinimized) {
-      <app-window [process]="process" cdkDragBoundary=".os-root"></app-window>
+      <app-window [process]="process"></app-window>
     }
   }
 
