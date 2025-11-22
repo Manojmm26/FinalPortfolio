@@ -1,0 +1,149 @@
+<div *ngIf="isOpen()" cdkDrag cdkDragBoundary=".wallpaper" (cdkDragEnded)="onDragEnded($event)"
+    class="absolute top-20 left-40 w-[600px] bg-[#ECE9D8] rounded-t-lg shadow-2xl flex flex-col border-[3px] border-[#0058EE] z-10">
+
+    <!-- Title Bar -->
+    <div cdkDragHandle class="window-title-bar h-8 flex items-center justify-between px-2 cursor-default select-none">
+        <div class="flex items-center gap-2">
+            <svg viewBox="0 0 48 48" class="w-4 h-4">
+                <path d="M6 8h36v26H6z" fill="#98C8F3" stroke="#fff" stroke-width="2" />
+            </svg>
+            <span class="text-white font-bold text-sm font-sans" style="text-shadow: 1px 1px 2px black;">{{ title()
+                }}</span>
+        </div>
+        <div class="flex gap-1">
+            <!-- Minimize -->
+            <button (click)="minimize.emit()"
+                class="w-5 h-5 bg-[#288EFF] rounded-[3px] border border-white shadow-[inset_0_-1px_2px_rgba(0,0,0,0.2)] flex items-end justify-center pb-1 hover:brightness-110 active:brightness-90">
+                <div class="w-2 h-0.5 bg-white"></div>
+            </button>
+            <!-- Maximize -->
+            <button (click)="maximize.emit()"
+                class="w-5 h-5 bg-[#288EFF] rounded-[3px] border border-white shadow-[inset_0_-1px_2px_rgba(0,0,0,0.2)] flex items-center justify-center hover:brightness-110 active:brightness-90">
+                <div class="w-2.5 h-2 border border-white border-t-2"></div>
+            </button>
+            <!-- Close -->
+            <button (click)="close.emit()"
+                class="w-5 h-5 bg-[#E04C38] rounded-[3px] border border-white shadow-[inset_0_-1px_2px_rgba(0,0,0,0.2)] flex items-center justify-center hover:bg-[#f06452] active:bg-[#c73623]">
+                <svg width="10" height="10" viewBox="0 0 10 10" class="fill-white">
+                    <path d="M1 1l8 8m0-8l-8 8" stroke="white" stroke-width="2" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu Bar -->
+    <div class="bg-[#ECE9D8] px-1 pt-1 border-b border-[#D1CFC4] text-xs flex gap-2 pb-1 text-black">
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">File</span>
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">Edit</span>
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">View</span>
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">Favorites</span>
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">Tools</span>
+        <span class="px-2 hover:bg-[#316AC5] hover:text-white cursor-pointer">Help</span>
+    </div>
+
+    <!-- Toolbar -->
+    <div
+        class="bg-[#ECE9D8] border-b border-[#D1CFC4] p-1 flex items-center gap-4 shadow-[inset_0_-2px_2px_rgba(255,255,255,0.5)]">
+        <div class="flex items-center gap-1 text-xs text-gray-600">
+            <div class="w-6 h-6 rounded-full border border-gray-300 bg-green-500/20 flex items-center justify-center">←
+            </div>
+            <span>Back</span>
+        </div>
+        <div class="w-[1px] h-6 bg-gray-300 mx-1"></div>
+        <div class="flex items-center gap-1 text-xs text-gray-600">
+            <div class="w-6 h-6 bg-yellow-100 border border-gray-300 rounded flex items-center justify-center">📂</div>
+            <span>Search</span>
+        </div>
+    </div>
+
+    <!-- Address Bar -->
+    <div class="bg-[#ECE9D8] p-1 flex items-center gap-2 text-xs border-b border-[#D1CFC4]">
+        <span class="text-gray-500">Address</span>
+        <div class="flex-1 bg-white border border-[#7F9DB9] px-1 py-0.5 flex items-center gap-2">
+            <svg class="w-3 h-3" viewBox="0 0 48 48">
+                <path d="M6 8h36v26H6z" fill="#98C8F3" stroke="#285496" />
+            </svg>
+            <span>{{ title() }}</span>
+        </div>
+        <button class="bg-green-500 text-white px-2 py-0.5 border border-green-700 text-[10px] flex items-center gap-1">
+            Go
+        </button>
+    </div>
+
+    <!-- Window Content -->
+    <div class="flex-1 bg-white flex p-1 min-h-[300px]">
+        <!-- Sidebar -->
+        <div class="w-48 bg-[#7CA0CF] bg-gradient-to-b from-[#7CA0CF] to-[#6F8EC7] p-3 flex flex-col gap-4">
+            <div class="bg-white rounded-t-md overflow-hidden">
+                <div
+                    class="bg-gradient-to-r from-white to-[#C6D3F7] px-3 py-1 font-bold text-[#215DC6] text-xs flex justify-between items-center cursor-pointer">
+                    System Tasks
+                    <span class="text-lg leading-3">^</span>
+                </div>
+                <div class="p-3 bg-[#D6DFF7] text-[#215DC6] text-[11px] flex flex-col gap-2">
+                    <div class="hover:underline cursor-pointer">View system information</div>
+                    <div class="hover:underline cursor-pointer">Add or remove programs</div>
+                    <div class="hover:underline cursor-pointer">Change a setting</div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-t-md overflow-hidden">
+                <div
+                    class="bg-gradient-to-r from-white to-[#C6D3F7] px-3 py-1 font-bold text-[#215DC6] text-xs flex justify-between items-center cursor-pointer">
+                    Other Places
+                    <span class="text-lg leading-3">^</span>
+                </div>
+                <div class="p-3 bg-[#D6DFF7] text-[#215DC6] text-[11px] flex flex-col gap-2">
+                    <div class="hover:underline cursor-pointer">My Network Places</div>
+                    <div class="hover:underline cursor-pointer">My Documents</div>
+                    <div class="hover:underline cursor-pointer">Control Panel</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 bg-white p-4">
+            <h3 class="font-bold text-sm border-b border-gray-200 mb-2 pb-1 text-gray-600">Hard Disk Drives</h3>
+            <div class="flex gap-8 mb-6">
+                <!-- Drive C -->
+                <div class="flex gap-2 group w-48 cursor-default">
+                    <div class="w-10 h-10 relative">
+                        <!-- Drive Icon CSS Approximation -->
+                        <div class="w-full h-2/3 bg-gray-200 border border-gray-400 mt-2 relative overflow-hidden">
+                            <div class="absolute top-1 right-1 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-bold font-sans group-hover:text-[#316AC5] group-hover:underline">Local
+                            Disk (C:)</span>
+                        <span class="text-[10px] text-gray-500">Local Disk</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-sm border-b border-gray-200 mb-2 pb-1 text-gray-600">Devices with Removable
+                Storage</h3>
+            <div class="flex gap-8">
+                <!-- DVD Drive -->
+                <div class="flex gap-2 group w-48 cursor-default">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full border border-gray-300 text-gray-400 text-xs font-bold">
+                        CD
+                    </div>
+                    <div class="flex flex-col">
+                        <span
+                            class="text-xs font-bold font-sans group-hover:text-[#316AC5] group-hover:underline">DVD-RAM
+                            Drive (D:)</span>
+                        <span class="text-[10px] text-gray-500">CD Drive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="bg-[#ECE9D8] border-t border-[#D1CFC4] px-2 py-0.5 text-[11px] text-black flex justify-between">
+        <span>5 objects</span>
+        <span class="border-l border-gray-400 pl-2 ml-2">{{ title() }}</span>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { NotepadComponent } from './apps/notepad/notepad.component';
 import { SettingsComponent } from './apps/settings/settings.component';
 import { BSODComponent } from './apps/bsod/bsod.component';
 import { Windows11LayoutComponent } from './layouts/windows11/windows11-layout.component';
+import { WindowsXpLayoutComponent } from './layouts/windowsxp/windowsxp-layout.component';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ import { Windows11LayoutComponent } from './layouts/windows11/windows11-layout.c
     NotepadComponent,
     SettingsComponent,
     BSODComponent,
-    Windows11LayoutComponent
+    Windows11LayoutComponent,
+    WindowsXpLayoutComponent
   ]
 })
 export class AppComponent {

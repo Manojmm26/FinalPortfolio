@@ -1,4 +1,6 @@
-@if (theme() === 'win11') {
+@if (theme() === 'winXP') {
+<app-windowsxp-layout></app-windowsxp-layout>
+} @else if (theme() === 'win11') {
 <app-windows11-layout></app-windows11-layout>
 } @else {
 <div class="os-root w-screen h-screen overflow-hidden" [attr.data-theme]="theme()"

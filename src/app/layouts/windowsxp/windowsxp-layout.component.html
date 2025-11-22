@@ -1,0 +1,23 @@
+<!-- Windows XP Layout -->
+<div class="wallpaper h-screen w-screen flex flex-col justify-between overflow-hidden relative">
+
+    <!-- DESKTOP ICONS -->
+    <div class="absolute top-0 left-0 p-4 grid gap-6 grid-flow-row auto-rows-max z-0">
+        <app-xp-desktop-icon *ngFor="let icon of desktopIcons" [icon]="icon" (iconClick)="onDesktopIconClick($event)">
+        </app-xp-desktop-icon>
+    </div>
+
+    <!-- WINDOW: MY COMPUTER -->
+    <app-xp-window [isOpen]="isMyComputerOpen" [title]="'My Computer'" (close)="closeMyComputer()"
+        (minimize)="minimizeMyComputer()" (maximize)="maximizeMyComputer()">
+    </app-xp-window>
+
+    <!-- START MENU -->
+    <app-xp-start-menu [isOpen]="isStartMenuOpen" (myComputerClick)="openMyComputer()">
+    </app-xp-start-menu>
+
+    <!-- TASKBAR -->
+    <app-xp-taskbar [items]="taskbarItems" (startClick)="toggleStartMenu()" (itemClick)="onTaskbarItemClick($event)">
+    </app-xp-taskbar>
+
+</div>
