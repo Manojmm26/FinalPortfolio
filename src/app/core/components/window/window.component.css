@@ -1,0 +1,6 @@
+.max-window {
+    width: 100% !important;
+    height: calc(100% - 48px) !important;
+    top: 0 !important;
+    left: 0 !important;
+}

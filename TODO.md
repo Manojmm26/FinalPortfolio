@@ -1,55 +1,65 @@
-# Project TODO List
+# Project Roadmap & TODOs
 
-This document tracks the specific, actionable tasks for the "Windows Time Machine" project.
+This document outlines the development plan for the Windows Time Machine Portfolio. The goal is to create a polished, professional showcase of frontend engineering skills.
 
-## Core Functionality
+## 🚀 Phase 1: Portfolio Essentials (High Priority)
 
-- [ ] **Window Resizing:** Implement resizing handles on window corners and edges.
-- [ ] **Start Menu:**
-    - [ ] Create a functional Start Menu component.
-    - [ ] Populate it with shortcuts to open applications.
-    - [ ] Style the Start Menu according to the active theme.
-- [ ] **Desktop Icons:**
-    - [ ] Enable selection of desktop icons (single and marquee/box selection).
-    - [ ] Allow dragging and dropping icons to reposition them on the desktop.
-- [ ] **Right-Click Context Menus:**
-    - [ ] Implement a context menu for the desktop (e.g., "New Folder", "Change Background").
-    - [ ] Implement context menus for icons and taskbar items.
-- [ ] **File System Simulation:**
-    - [ ] Create a virtual file system service.
-    - [ ] Implement basic concepts like Desktop, My Documents, and folders.
-    - [ ] Allow apps like Notepad to "save" and "open" files from this virtual system.
+These features are critical for the "Portfolio" aspect of the project.
 
-## UI/UX Enhancements
+- [ ] **"About Me" Application:**
+    - [ ] Create a `ProfileComponent` that acts as a native window.
+    - [ ] Display bio, skills, experience, and social links.
+    - [ ] Style it to look like a system settings or profile page.
+- [ ] **"Projects" Explorer:**
+    - [ ] Implement a virtual file explorer view.
+    - [ ] List projects as "folders" or "files".
+    - [ ] Clicking a project opens a detailed view (or a mock browser window with the live site).
+- [ ] **Resume Viewer:**
+    - [ ] Add a PDF viewer or a rich-text representation of the resume.
+    - [ ] Add a "Download" button.
+- [ ] **Contact App:**
+    - [ ] A simple "Mail" app interface for sending messages (or copying email address).
 
-- [ ] **Animations:**
-    - [ ] Add animations for opening/closing windows.
-    - [ ] Create a "genie" effect for minimizing windows to the taskbar.
-    - [ ] Animate the maximizing/restoring transition.
-- [ ] **Theme Fidelity:**
-    - [ ] Refine button styles, fonts, and icons for each OS theme to be more accurate.
-    - [ ] Add theme-specific sounds for system events (startup, shutdown, errors).
-- [ ] **Boot/Login Sequence:**
-    - [ ] Create a boot-up screen animation for each OS.
-    - [ ] Add a mock login screen.
-- [ ] **Taskbar Improvements:**
-    - [ ] Show window previews on hover for Win7 and later themes.
-    - [ ] Implement "active" and "hover" states more accurately for each theme.
-- [ ] **State Persistence:**
-    - [ ] Use `localStorage` to remember the active theme across sessions.
-    - [ ] Remember the position and size of windows when they are closed and reopened.
+## 🎨 Phase 2: The Windows 11 Experience (Current Focus)
 
-## New Applications
+Refining the Windows 11 layout to be the default "wow" factor.
 
-- [ ] **File Explorer:** A basic file explorer to navigate the virtual file system.
-- [ ] **Minesweeper:** The classic game, with theme-aware styling.
-- [ ] **Paint:** A simple drawing application with basic tools (pencil, brush, shapes).
-- [ ] **Internet Explorer (Mock):** A mock browser that can display a few static HTML pages hosted within the app.
-- [ ] **Calculator:** A standard calculator application.
+- [x] **Basic Layout:** Desktop, Taskbar, Wallpaper.
+- [x] **Window Dragging:** Implemented using CDK DragDrop.
+- [ ] **Start Menu Interactivity:**
+    - [ ] Make the search bar functional (filter apps).
+    - [ ] Make pinned apps clickable to open actual windows.
+- [ ] **Action Center:**
+    - [ ] Make the sliders interactive (even if they don't change system volume).
+    - [ ] Toggle buttons (WiFi, Bluetooth) should have active states.
+- [ ] **Taskbar Polish:**
+    - [ ] Show active indicators for open apps.
+    - [ ] Minimize/Restore animations.
 
-## Bugs & Refactoring
+## 🛠 Phase 3: Architecture & Engineering (The "Senior" Touch)
 
-- [ ] **Z-Index Management:** Review and potentially refactor z-index logic to be more robust, especially with hundreds of windows.
-- [ ] **Mobile View:** Improve the "Tablet Mode" to be more than just maximized windows. Consider a different UI paradigm for small screens.
-- [ ] **Performance:** Profile and optimize performance, especially when many windows are open and moving.
-- [ ] **Accessibility:** Add ARIA attributes and ensure the application can be navigated using a keyboard.
+Tasks that demonstrate code quality and architectural understanding.
+
+- [ ] **Unit Testing:**
+    - [ ] Add Jest/Jasmine tests for `WindowManagerService`.
+    - [ ] Test the `Process` state logic.
+- [ ] **Accessibility (a11y):**
+    - [ ] Ensure full keyboard navigation (Tab support in Start Menu and Taskbar).
+    - [ ] Add ARIA labels to all interactive elements.
+- [ ] **Performance:**
+    - [ ] Audit bundle size.
+    - [ ] Optimize image loading (lazy loading for theme assets).
+
+## 🔮 Phase 4: Time Travel (Theming)
+
+Expanding the "Time Machine" concept.
+
+- [ ] **Theme Switcher UI:** A dedicated "Time Machine" app or widget to switch eras.
+- [ ] **Windows 95/98 Theme:** Retro pixel fonts, bevels, and grey backgrounds.
+- [ ] **Windows XP Theme:** Bliss wallpaper, blue taskbar, rounded corners.
+- [ ] **Windows 7 Theme:** Aero glass effect (backdrop-filter), glossy UI.
+
+## 🐛 Known Issues / Bugs
+
+- [ ] **Z-Index:** Clicking a window should always bring it to the front (check `mousedown` logic).
+- [ ] **Mobile View:** Windows 11 layout needs a specific mobile adaptation (hide windows, show app grid).

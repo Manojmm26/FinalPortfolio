@@ -1,0 +1,36 @@
+<!-- Service-based Window Component -->
+<div *ngIf="!process().isMinimized" cdkDrag cdkDragBoundary=".os-root" [cdkDragFreeDragPosition]="process().position"
+    (cdkDragEnded)="onDragEnded($event)" (mousedown)="onFocus()"
+    class="absolute bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden border border-gray-200"
+    [class.max-window]="process().isMaximized" [style.width.px]="process().isMaximized ? null : process().size.width"
+    [style.height.px]="process().isMaximized ? null : process().size.height" [style.z-index]="process().zIndex"
+    #windowFrame>
+
+    <!-- Title Bar -->
+    <div cdkDragHandle
+        class="h-8 bg-gray-100 border-b border-gray-200 flex items-center justify-between px-2 cursor-move select-none">
+        <div class="flex items-center gap-2">
+            <img [src]="process().icon" class="w-4 h-4" alt="">
+            <span class="text-sm font-medium">{{ process().title }}</span>
+        </div>
+        <div class="flex items-center">
+            <button (click)="onMinimize()"
+                class="w-8 h-8 flex items-center justify-center hover:bg-gray-200 transition">
+                <span class="text-xs">─</span>
+            </button>
+            <button (click)="onMaximize()"
+                class="w-8 h-8 flex items-center justify-center hover:bg-gray-200 transition">
+                <span class="text-xs">□</span>
+            </button>
+            <button (click)="onClose()"
+                class="w-8 h-8 flex items-center justify-center hover:bg-red-500 hover:text-white transition">
+                <span class="text-xs">✕</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Window Content -->
+    <div class="flex-1 overflow-auto">
+        <ng-container *ngComponentOutlet="process().component"></ng-container>
+    </div>
+</div>

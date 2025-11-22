@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { WindowManagerService } from '../../services/window-manager.service';
-import { WindowsTheme } from '../../models/os-types';
+import { WindowManagerService } from '../../core/services/window-manager.service';
+import { WindowsTheme } from '../../core/models/os-types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SettingsComponent {
   windowManager = inject(WindowManagerService);
-  
+
   themes: { id: WindowsTheme, name: string }[] = [
     { id: 'win95', name: 'Windows 95' },
     { id: 'winXP', name: 'Windows XP' },

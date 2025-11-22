@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { WindowManagerService } from './services/window-manager.service';
-import { DesktopComponent } from './components/desktop/desktop.component';
-import { TaskbarComponent } from './components/taskbar/taskbar.component';
-import { WindowComponent } from './components/window/window.component';
+import { WindowManagerService } from './core/services/window-manager.service';
+import { DesktopComponent } from './core/components/desktop/desktop.component';
+import { TaskbarComponent } from './core/components/taskbar/taskbar.component';
+import { WindowComponent } from './core/components/window/window.component';
 import { NotepadComponent } from './apps/notepad/notepad.component';
 import { SettingsComponent } from './apps/settings/settings.component';
 import { BSODComponent } from './apps/bsod/bsod.component';
+import { Windows11LayoutComponent } from './layouts/windows11/windows11-layout.component';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,13 @@ import { BSODComponent } from './apps/bsod/bsod.component';
     WindowComponent,
     NotepadComponent,
     SettingsComponent,
-    BSODComponent
+    BSODComponent,
+    Windows11LayoutComponent
   ]
 })
 export class AppComponent {
   windowManager = inject(WindowManagerService);
-  
+
   theme = this.windowManager.activeTheme;
   processes = this.windowManager.processes;
 }

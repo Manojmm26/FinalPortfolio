@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { WindowManagerService } from '../../services/window-manager.service';
+import { WindowManagerService } from '../../core/services/window-manager.service';
 
 @Component({
   selector: 'app-bsod',

@@ -1,8 +1,8 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
 import { AppMetadata, Process, WindowsTheme } from '../models/os-types';
-import { NotepadComponent } from '../apps/notepad/notepad.component';
-import { SettingsComponent } from '../apps/settings/settings.component';
-import { BSODComponent } from '../apps/bsod/bsod.component';
+import { NotepadComponent } from '../../apps/notepad/notepad.component';
+import { SettingsComponent } from '../../apps/settings/settings.component';
+import { BSODComponent } from '../../apps/bsod/bsod.component';
 
 @Injectable({ providedIn: 'root' })
 export class WindowManagerService {
@@ -12,7 +12,7 @@ export class WindowManagerService {
   activeProcessId = signal<string | null>(null);
   private nextZIndex = signal(100);
   private lastPosition = { x: 50, y: 50 };
-  
+
   // App Registry
   private registeredApps = new Map<string, AppMetadata>([
     ['notepad', {
@@ -29,7 +29,7 @@ export class WindowManagerService {
       component: SettingsComponent,
       defaultSize: { width: 380, height: 420 }
     }],
-     ['bsod', {
+    ['bsod', {
       id: 'bsod',
       name: 'BSOD',
       icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACOSURBVFhH7c9BCoAwEATBdvf/n9pBbQjhhgQzb8tN38L/8g5Q4X157t/MGS6tL58EKLQeWwLYYLYE2GC2BNhgtgTYYLYE2GC2BNhgtgTYYLYE2GC2BNhgtgTYYLYE2GC2BNhgtgTYYLYE2GC2BNhgtgTYYLYE2GC2BNhgtgTYYPYC3gO+j7iA736WosYAAAAASUVORK5CYII=',
@@ -43,9 +43,9 @@ export class WindowManagerService {
 
   constructor() {
     effect(() => {
-        // This is a simple effect to show how to react to state changes.
-        console.log(`Current theme: ${this.activeTheme()}`);
-        console.log(`Running processes: ${this.processes().length}`);
+      // This is a simple effect to show how to react to state changes.
+      console.log(`Current theme: ${this.activeTheme()}`);
+      console.log(`Running processes: ${this.processes().length}`);
     });
   }
 
@@ -53,19 +53,19 @@ export class WindowManagerService {
   openApp(appId: string) {
     const appMeta = this.registeredApps.get(appId);
     if (!appMeta) return;
-    
+
     // For BSOD, ensure it's fullscreen and singleton
     if (appId === 'bsod') {
-        const existingBsod = this.processes().find(p => p.appId === 'bsod');
-        if(existingBsod) {
-            this.focusProcess(existingBsod.processId);
-            return;
-        }
+      const existingBsod = this.processes().find(p => p.appId === 'bsod');
+      if (existingBsod) {
+        this.focusProcess(existingBsod.processId);
+        return;
+      }
     }
 
     const processId = `${appId}-${Math.random().toString(36).substring(2, 9)}`;
     const newZIndex = this.nextZIndex();
-    
+
     // Cascade new windows
     this.lastPosition.x = (this.lastPosition.x + 30) % 300;
     this.lastPosition.y = (this.lastPosition.y + 30) % 300;
@@ -79,7 +79,7 @@ export class WindowManagerService {
       isMinimized: false,
       isMaximized: appId === 'bsod',
       zIndex: newZIndex,
-      position: appId === 'bsod' ? {x:0, y:0} : { ...this.lastPosition },
+      position: appId === 'bsod' ? { x: 0, y: 0 } : { ...this.lastPosition },
       size: appMeta.defaultSize || { width: 500, height: 400 },
     };
 
@@ -101,7 +101,7 @@ export class WindowManagerService {
     ));
     this.activeProcessId.set(null);
   }
-  
+
   toggleMaximizeProcess(processId: string) {
     this.processes.update(procs => procs.map(p =>
       p.processId === processId ? { ...p, isMaximized: !p.isMaximized } : p
@@ -110,7 +110,7 @@ export class WindowManagerService {
   }
 
   restoreProcess(processId: string) {
-     this.processes.update(procs => procs.map(p =>
+    this.processes.update(procs => procs.map(p =>
       p.processId === processId ? { ...p, isMinimized: false } : p
     ));
     this.focusProcess(processId);
@@ -126,9 +126,9 @@ export class WindowManagerService {
     this.activeProcessId.set(processId);
     this.nextZIndex.set(newZIndex + 1);
   }
-  
-  updatePosition(processId: string, position: {x: number, y: number}) {
-     this.processes.update(procs => procs.map(p =>
+
+  updatePosition(processId: string, position: { x: number, y: number }) {
+    this.processes.update(procs => procs.map(p =>
       p.processId === processId ? { ...p, position: position } : p
     ));
   }

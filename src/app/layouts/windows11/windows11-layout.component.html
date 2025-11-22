@@ -1,0 +1,87 @@
+<div class="h-screen w-screen overflow-hidden wallpaper relative text-slate-800">
+
+    <!-- Desktop -->
+    <app-desktop [icons]="desktopIcons"></app-desktop>
+
+    <!-- Windows -->
+    <app-win11-window *ngIf="isExplorerOpen" title="File Explorer"
+        iconUrl="https://img.icons8.com/fluency/48/000000/folder-invoices--v1.png" [isOpen]="isExplorerOpen"
+        [isMinimized]="isExplorerMinimized" (close)="closeWindow('explorer')" (minimize)="minimizeWindow('explorer')"
+        (maximize)="maximizeWindow('explorer')">
+
+        <!-- File Explorer Content -->
+        <div class="h-12 bg-gray-50 border-b border-gray-200 flex items-center px-4 gap-4">
+            <button class="px-3 py-1 hover:bg-gray-200 rounded text-sm flex items-center gap-2 text-gray-600">
+                <span class="text-blue-500 font-bold">+</span> New
+            </button>
+            <div class="h-6 w-px bg-gray-300 mx-1"></div>
+            <button class="p-1.5 hover:bg-gray-200 rounded">✂️</button>
+            <button class="p-1.5 hover:bg-gray-200 rounded">📋</button>
+            <button class="p-1.5 hover:bg-gray-200 rounded">✏️</button>
+            <button class="p-1.5 hover:bg-gray-200 rounded">🗑️</button>
+        </div>
+
+        <div class="flex-1 flex bg-white">
+            <!-- Sidebar -->
+            <div class="w-48 border-r border-gray-100 p-2 bg-gray-50/50 text-sm">
+                <div class="p-2 hover:bg-gray-200 rounded cursor-pointer flex gap-2 items-center">
+                    <img src="https://img.icons8.com/color/48/home.png" class="w-4 h-4"> Home
+                </div>
+                <div class="p-2 hover:bg-gray-200 rounded cursor-pointer flex gap-2 items-center">
+                    <img src="https://img.icons8.com/color/48/folder-invoices--v1.png" class="w-4 h-4"> Documents
+                </div>
+                <div class="p-2 hover:bg-gray-200 rounded cursor-pointer flex gap-2 items-center">
+                    <img src="https://img.icons8.com/color/48/download.png" class="w-4 h-4"> Downloads
+                </div>
+                <div class="p-2 hover:bg-gray-200 rounded cursor-pointer flex gap-2 items-center">
+                    <img src="https://img.icons8.com/color/48/image.png" class="w-4 h-4"> Pictures
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="flex-1 p-4">
+                <h2 class="text-sm font-semibold mb-4 text-gray-500">Quick Access</h2>
+                <div class="grid grid-cols-4 gap-4">
+                    <div
+                        class="flex flex-col items-center p-4 hover:bg-blue-50 rounded border border-transparent hover:border-blue-100 cursor-pointer transition">
+                        <img src="https://img.icons8.com/fluency/96/folder-invoices--v1.png" class="w-16 h-16 mb-2">
+                        <span class="text-xs text-center w-full truncate">Work Projects</span>
+                    </div>
+                    <div
+                        class="flex flex-col items-center p-4 hover:bg-blue-50 rounded border border-transparent hover:border-blue-100 cursor-pointer transition">
+                        <img src="https://img.icons8.com/fluency/96/folder-invoices--v1.png" class="w-16 h-16 mb-2">
+                        <span class="text-xs text-center w-full truncate">Personal</span>
+                    </div>
+                    <div
+                        class="flex flex-col items-center p-4 hover:bg-blue-50 rounded border border-transparent hover:border-blue-100 cursor-pointer transition">
+                        <img src="https://img.icons8.com/fluency/96/image.png" class="w-16 h-16 mb-2">
+                        <span class="text-xs text-center w-full truncate">Vacation 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div
+            class="h-6 bg-gray-50 border-t border-gray-200 flex items-center px-2 text-xs text-gray-500 justify-between">
+            <span>3 items</span>
+            <div class="flex gap-2">
+                <span>📂</span>
+                <span>▤</span>
+            </div>
+        </div>
+    </app-win11-window>
+
+    <!-- Start Menu -->
+    <app-start-menu [isOpen]="isStartMenuOpen" (appLaunched)="launchApp($event)">
+    </app-start-menu>
+
+    <!-- Taskbar -->
+    <app-taskbar [apps]="activeTaskbarApps" [isStartMenuOpen]="isStartMenuOpen"
+        (startMenuToggled)="toggleMenu('start')">
+
+        <!-- System Tray injected into Taskbar -->
+        <app-system-tray system-tray [isActionCenterOpen]="isActionCenterOpen" [isCalendarOpen]="isCalendarOpen"
+            (toggleActionCenter)="toggleMenu('action')" (toggleCalendar)="toggleMenu('calendar')">
+        </app-system-tray>
+    </app-taskbar>
+
+</div>

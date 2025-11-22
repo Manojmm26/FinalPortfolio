@@ -1,0 +1,30 @@
+<div class="absolute bottom-0 w-full h-12 glass flex items-center justify-between px-4 z-50">
+    <!-- Weather Widget (Left) -->
+    <div class="flex items-center gap-2 w-32 hover:bg-white/40 p-1 rounded cursor-pointer transition hidden md:flex">
+        <img src="https://img.icons8.com/color/48/000000/partly-cloudy-rain--v1.png" class="w-8 h-8">
+        <div class="flex flex-col">
+            <span class="text-xs font-medium text-gray-700">72°F</span>
+            <span class="text-[10px] text-blue-600">Rain coming</span>
+        </div>
+    </div>
+
+    <!-- Center Icons -->
+    <div class="absolute left-1/2 transform -translate-x-1/2 flex gap-1 h-full items-center py-1">
+        <div class="w-10 h-10 rounded hover:bg-white/40 flex items-center justify-center cursor-pointer taskbar-icon transition"
+            [class.bg-white-40]="isStartMenuOpen" (click)="toggleStartMenu()">
+            <img src="https://img.icons8.com/color/48/000000/windows-10.png" class="w-6 h-6">
+        </div>
+
+        <div *ngFor="let app of apps"
+            class="w-10 h-10 rounded hover:bg-white/40 flex items-center justify-center cursor-pointer taskbar-icon transition"
+            [class.bg-white-40]="app.isActive" [class.border-b-2]="app.isOpen" [class.border-blue-500]="app.isOpen"
+            (click)="onAppClick(app)">
+            <img [src]="app.iconUrl" class="w-6 h-6">
+        </div>
+    </div>
+
+    <!-- System Tray Placeholder (Will be its own component) -->
+    <div class="flex items-center gap-2 h-full">
+        <ng-content select="[system-tray]"></ng-content>
+    </div>
+</div>

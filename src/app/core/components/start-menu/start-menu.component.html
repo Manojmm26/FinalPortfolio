@@ -1,0 +1,97 @@
+<div *ngIf="isOpen"
+    class="window-enter absolute bottom-16 left-1/2 transform -translate-x-1/2 w-[640px] h-[650px] glass rounded-xl shadow-2xl flex flex-col p-6 z-50"
+    (click)="$event.stopPropagation()">
+    <!-- Search Bar -->
+    <div class="relative mb-6">
+        <span class="absolute left-3 top-2.5 text-gray-500">🔍</span>
+        <input type="text" placeholder="Search for apps, settings, and documents"
+            class="w-full bg-gray-100/80 border border-gray-200 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-500">
+    </div>
+
+    <!-- Pinned Section -->
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-sm font-bold text-gray-700">Pinned</h3>
+        <button class="bg-white px-2 py-1 rounded text-xs shadow-sm border border-gray-200 hover:bg-gray-50">All
+            apps &gt;</button>
+    </div>
+
+    <div class="grid grid-cols-6 gap-y-6 gap-x-2 mb-8">
+        <!-- App Items -->
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Edge')">
+            <img src="https://img.icons8.com/color/48/000000/ms-edge-new.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Edge</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Word')">
+            <img src="https://img.icons8.com/color/48/000000/word.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Word</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Excel')">
+            <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Excel</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Photos')">
+            <img src="https://img.icons8.com/color/48/000000/microsoft-photos.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Photos</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Store')">
+            <img src="https://img.icons8.com/fluency/48/000000/microsoft-store.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Store</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Mail')">
+            <img src="https://img.icons8.com/color/48/000000/gmail-new.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Mail</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Spotify')">
+            <img src="https://img.icons8.com/color/48/000000/spotify--v1.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Spotify</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 cursor-pointer hover:bg-white/40 p-2 rounded transition"
+            (click)="launchApp('Settings')">
+            <img src="https://img.icons8.com/fluency/48/000000/settings.png" class="w-8 h-8">
+            <span class="text-xs text-gray-700">Settings</span>
+        </div>
+    </div>
+
+    <!-- Recommended Section -->
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-sm font-bold text-gray-700">Recommended</h3>
+        <button class="bg-white px-2 py-1 rounded text-xs shadow-sm border border-gray-200 hover:bg-gray-50">More
+            &gt;</button>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-center gap-3 p-2 hover:bg-white/40 rounded cursor-pointer">
+            <img src="https://img.icons8.com/color/48/000000/word.png" class="w-8 h-8">
+            <div class="flex flex-col">
+                <span class="text-xs font-medium text-gray-700">Project Proposal.docx</span>
+                <span class="text-[10px] text-gray-500">2 hours ago</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 p-2 hover:bg-white/40 rounded cursor-pointer">
+            <img src="https://img.icons8.com/color/48/000000/pdf.png" class="w-8 h-8">
+            <div class="flex flex-col">
+                <span class="text-xs font-medium text-gray-700">Invoice_2024.pdf</span>
+                <span class="text-[10px] text-gray-500">Yesterday at 4:20 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Footer -->
+    <div class="mt-auto flex justify-between items-center pt-4 border-t border-gray-300/50 px-2">
+        <div class="flex items-center gap-3 hover:bg-white/40 p-2 rounded cursor-pointer">
+            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">
+                US</div>
+            <span class="text-sm text-gray-700 font-medium">User</span>
+        </div>
+        <button class="p-2 hover:bg-white/40 rounded text-gray-700">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/shutdown.png" class="w-5 h-5 opacity-70">
+        </button>
+    </div>
+</div>

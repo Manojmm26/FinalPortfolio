@@ -1,0 +1,28 @@
+<!-- Draggable Window -->
+<!-- Using cdkDrag for dragging -->
+<div *ngIf="isOpen && !isMinimized" cdkDrag cdkDragBoundary=".wallpaper"
+    class="window-enter absolute bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden border border-gray-300 resize z-10"
+    [style.width]="width" [style.height]="height" [style.top]="top" [style.left]="left" style="resize: both;">
+    <!-- Title Bar -->
+    <div cdkDragHandle class="h-10 glass flex items-center justify-between px-2 cursor-default select-none"
+        id="explorer-header">
+        <div class="flex items-center gap-3 px-2 w-full h-full">
+            <img *ngIf="iconUrl" [src]="iconUrl" class="w-4 h-4">
+            <span class="text-xs font-medium">{{ title }}</span>
+        </div>
+        <div class="flex items-center h-full">
+            <button class="w-10 h-full flex items-center justify-center hover:bg-gray-200 transition text-sm"
+                (click)="onMinimize()">─</button>
+            <button class="w-10 h-full flex items-center justify-center hover:bg-gray-200 transition text-sm"
+                (click)="onMaximize()">□</button>
+            <button
+                class="w-10 h-full flex items-center justify-center hover:bg-red-500 hover:text-white transition text-sm rounded-tr-lg"
+                (click)="onClose()">✕</button>
+        </div>
+    </div>
+
+    <!-- Window Content -->
+    <div class="flex-1 flex flex-col overflow-hidden relative">
+        <ng-content></ng-content>
+    </div>
+</div>

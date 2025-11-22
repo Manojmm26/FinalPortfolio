@@ -1,0 +1,8 @@
+<div class="desktop-grid absolute top-0 left-0 p-2 grid grid-cols-1 gap-4 h-full content-start z-0">
+    <div *ngFor="let icon of icons"
+        class="w-20 flex flex-col items-center p-2 rounded hover:bg-white/20 cursor-pointer transition"
+        (dblclick)="onDoubleClick(icon)">
+        <img [src]="icon.iconUrl" class="w-10 h-10 mb-1 drop-shadow-md" [alt]="icon.label">
+        <span class="text-xs text-white text-center text-shadow drop-shadow-md">{{ icon.label }}</span>
+    </div>
+</div>
