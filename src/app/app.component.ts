@@ -10,6 +10,7 @@ import { SettingsComponent } from './apps/settings/settings.component';
 import { BSODComponent } from './apps/bsod/bsod.component';
 import { Windows11LayoutComponent } from './layouts/windows11/windows11-layout.component';
 import { WindowsXpLayoutComponent } from './layouts/windowsxp/windowsxp-layout.component';
+import { Windows7LayoutComponent } from './layouts/windows7/windows7-layout.component';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ import { WindowsXpLayoutComponent } from './layouts/windowsxp/windowsxp-layout.c
     SettingsComponent,
     BSODComponent,
     Windows11LayoutComponent,
-    WindowsXpLayoutComponent
+    WindowsXpLayoutComponent,
+    Windows7LayoutComponent
   ]
 })
 export class AppComponent {

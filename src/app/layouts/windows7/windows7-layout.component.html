@@ -1,0 +1,34 @@
+<!-- Windows 7 Layout -->
+<div class="wallpaper h-screen w-screen flex flex-col justify-between overflow-hidden relative">
+
+    <!-- DESKTOP ICONS -->
+    <div class="absolute top-0 left-0 p-4 flex flex-col flex-wrap content-start gap-4 z-0 h-[calc(100%-40px)]">
+        <app-win7-desktop-icon *ngFor="let icon of desktopIcons" [icon]="icon"
+            (iconDoubleClick)="onDesktopIconDoubleClick($event)">
+        </app-win7-desktop-icon>
+    </div>
+
+    <!-- WINDOW: COMPUTER -->
+    <app-win7-window [isOpen]="isComputerOpen" [title]="'Computer'"
+        [icon]="'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Computer-blue.svg/1024px-Computer-blue.svg.png'"
+        [contentType]="'computer'" [initialX]="80" [initialY]="50" [width]="600" [height]="400"
+        (close)="closeComputer()" (minimize)="minimizeComputer()" (maximize)="maximizeComputer()">
+    </app-win7-window>
+
+    <!-- WINDOW: NOTEPAD -->
+    <app-win7-window [isOpen]="isNotepadOpen" [title]="'Untitled - Notepad'" [contentType]="'notepad'" [initialX]="130"
+        [initialY]="100" [width]="500" [height]="300" (close)="closeNotepad()" (minimize)="minimizeNotepad()"
+        (maximize)="maximizeNotepad()">
+    </app-win7-window>
+
+    <!-- START MENU -->
+    <app-win7-start-menu [isOpen]="isStartMenuOpen" (computerClick)="openComputer()" (notepadClick)="openNotepad()"
+        (shutdownClick)="onShutdown()">
+    </app-win7-start-menu>
+
+    <!-- TASKBAR -->
+    <app-win7-taskbar [items]="taskbarItems" (startClick)="toggleStartMenu()" (itemClick)="onTaskbarItemClick($event)"
+        (showDesktopClick)="minimizeAll()">
+    </app-win7-taskbar>
+
+</div>

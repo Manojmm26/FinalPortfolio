@@ -7,7 +7,7 @@ import { BSODComponent } from '../../apps/bsod/bsod.component';
 @Injectable({ providedIn: 'root' })
 export class WindowManagerService {
   // --- STATE SIGNALS ---
-  activeTheme = signal<WindowsTheme>('winXP');
+  activeTheme = signal<WindowsTheme>('win7');
   processes = signal<Process[]>([]);
   activeProcessId = signal<string | null>(null);
   private nextZIndex = signal(100);

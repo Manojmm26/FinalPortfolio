@@ -1,0 +1,46 @@
+/* Windows 7 Layout Styles */
+
+/* Classic Win7 Wallpaper */
+.wallpaper {
+    background: url('https://photos.smugmug.com/Wallpapers/Windows-7/i-cm9855f/0/42e7318e/O/img19.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+/* Aero Glass Effect Helper */
+.aero-glass {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Start Button Orb Effect */
+.start-orb {
+    background: radial-gradient(circle at center, #30d6ff 0%, #0074c5 48%, #00478f 100%);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+    transition: all 0.2s;
+}
+
+.start-orb:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.8), inset 0 2px 5px rgba(255, 255, 255, 1);
+}
+
+/* Text Shadow for Desktop Icons */
+.icon-text-shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Glossy Button Effect */
+.win-btn {
+    background: linear-gradient(to bottom, #f2f2f2 0%, #ebebeb 50%, #dddddd 51%, #cfcfcf 100%);
+    border: 1px solid #707070;
+    box-shadow: inset 0 1px 0 #fff;
+}
+
+.win-btn:hover {
+    background: linear-gradient(to bottom, #eaf6fd 0%, #d9f0fc 50%, #bee6fd 51%, #a7d9f5 100%);
+    border-color: #3c7fb1;
+}
